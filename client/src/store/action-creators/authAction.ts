@@ -1,24 +1,24 @@
 import { toast } from "react-toastify";
-import { SET_AUTH, SET_LOADING, SET_PROFILES } from "../reducers/auth";
 import loginService from "../../services/login-service";
 import registerService from "../../services/register-service";
 import exitService from "../../services/exit-service";
 import refreshService from "../../services/refresh-service";
 import { NavigateFunction } from "react-router-dom";
 import { Dispatch } from "redux";
+import { AuthActionTypes } from "../../types/store-types";
 
 export const setAuth = (bool: boolean) => ({
-  type: SET_AUTH,
+  type: AuthActionTypes.SET_AUTH,
   payload: bool,
 });
 
 export const setProfiles = (profiles: any) => ({
-  type: SET_PROFILES,
+  type: AuthActionTypes.SET_PROFILES,
   payload: profiles,
 });
 
 export const setLoading = (bool: boolean) => ({
-  type: SET_LOADING,
+  type: AuthActionTypes.SET_LOADING,
   payload: bool,
 });
 

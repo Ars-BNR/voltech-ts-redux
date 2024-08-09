@@ -31,13 +31,14 @@ const MakingOrder = () => {
     allCount: totalQuantity,
     info: [],
   });
+  console.log(profiles);
   const handleShowBasket = async () => {
     try {
-      const idUsers = profiles?.id;
-      if (!idUsers) {
-        console.error("ID пользователя не найден");
-        return;
-      }
+      const idUsers = profiles.id;
+      // if (!idUsers) {
+      //   console.error("ID пользователя не найден");
+      //   return;
+      // }
       if (order.price !== 0 && order.allCount !== 0) {
         const response = idUsers && (await basketService.get(idUsers));
         const ordersData = response;
@@ -50,11 +51,11 @@ const MakingOrder = () => {
     }
   };
   useEffect(() => {
-    handleShowBasket();
+    profiles.id && handleShowBasket();
   }, []);
   const clearBasket = async () => {
     try {
-      const idUsers = profiles.profile.id;
+      const idUsers = profiles.id;
       if (idUsers) {
         await basketService.clearbasket(idUsers);
         localStorage.removeItem("TotalQuantity");
